@@ -1,5 +1,21 @@
 import './index.css';
 
+let resultMon;
+const arrMonth = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
+];
+
 export default function Calendar() {
   let date = new Date();
   let year = date.getFullYear();
@@ -66,34 +82,77 @@ export default function Calendar() {
 
     return result;
   }
-  let arr = range(getLastDay(year, month));
+  //
+  let rows;
+  draw(year, month);
+  //
+  //-------------------отрисовка---------------
+  function draw(year, month) {
+    let arr = range(getLastDay(year, month));
 
-  let firstWeekDay = getFirstWeekDay(year, month);
-  let lastWeekDay = getLastWeekDay(year, month);
+    let firstWeekDay = getFirstWeekDay(year, month);
+    let lastWeekDay = getLastWeekDay(year, month);
 
-  let nums = chunk(normalize(arr, firstWeekDay, 6 - lastWeekDay), 7);
-  console.log(nums);
+    let nums = chunk(normalize(arr, firstWeekDay, 6 - lastWeekDay), 7);
 
-  const rows = nums.map((item, index) => {
-    return (
-      <tr key={index}>
-        {item.map((elem, index2) =>
-          date.getDate() != elem ? (
-            <td key={index2}>{elem}</td>
-          ) : (
-            <td className="monDay" key={index2}>
-              {elem}
-            </td>
-          )
-        )}
-      </tr>
-    );
-  });
+    rows = nums.map((item, index) => {
+      return (
+        <tr key={index}>
+          {item.map((elem, index2) =>
+            date.getDate() != elem ? (
+              <td key={index2}>{elem}</td>
+            ) : (
+              <td className="monDay" key={index2}>
+                {elem}
+              </td>
+            )
+          )}
+        </tr>
+      );
+    });
+  }
+
+  //------------------------------------------------
+  //month
+
+  //   function changeMonth(num) {
+  //     for (let i = 0; i < arrMonth.length; i++) {
+  //       if (i == num) {
+  //         return (resultMon = arrMonth[i]);
+  //       }
+  //     }
+  //     return resultMon;
+  //   }
+  //   const headerMonth = changeMonth(date.getMonth());
+  //-----------------nav--------------------------
+
+  //---------------smena-----------------------
+  //
+  function getNextYear(year, month) {
+    if (month == 11) {
+      return year + 1;
+    } else return year;
+  }
+
+  function getNextMonth(month) {
+    if (month != 11) {
+      return month + 1;
+    } else {
+      return 0;
+    }
+  }
 
   return (
     <>
       <div className="header">
-        <h2>МАРТ</h2>
+        <button className="header__btn-nav">&#9668;</button>
+        <h2>1</h2>
+        <button
+          className="header__btn-nav"
+          onClick={() => draw(getNextYear(year, month), getNextMonth(month))}
+        >
+          &#9658;
+        </button>
       </div>
       <div id="parent">
         <div id="calendar">

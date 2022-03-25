@@ -35,6 +35,14 @@ body {
   color: aliceblue;
   text-align: center;
   padding: 3px 0px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header__btn-nav {
+  border: 0;
+  background-color: black;
+  color: aliceblue;
 }
 
 .note {
