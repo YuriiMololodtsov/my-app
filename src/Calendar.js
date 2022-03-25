@@ -1,6 +1,7 @@
 import './index.css';
 
 let resultMon;
+
 const arrMonth = [
   'Январь',
   'Февраль',
@@ -83,10 +84,12 @@ export default function Calendar() {
     return result;
   }
   //
-  let rows;
-  draw(year, month);
+
+  let rows = draw(year, month);
+
   //
   //-------------------отрисовка---------------
+
   function draw(year, month) {
     let arr = range(getLastDay(year, month));
 
@@ -95,7 +98,7 @@ export default function Calendar() {
 
     let nums = chunk(normalize(arr, firstWeekDay, 6 - lastWeekDay), 7);
 
-    rows = nums.map((item, index) => {
+    const rows = nums.map((item, index) => {
       return (
         <tr key={index}>
           {item.map((elem, index2) =>
@@ -110,6 +113,7 @@ export default function Calendar() {
         </tr>
       );
     });
+    return rows;
   }
 
   //------------------------------------------------
@@ -149,7 +153,10 @@ export default function Calendar() {
         <h2>1</h2>
         <button
           className="header__btn-nav"
-          onClick={() => draw(getNextYear(year, month), getNextMonth(month))}
+          onClick={() => {
+            rows = draw(getNextYear(year, month), getNextMonth(month));
+            console.log(rows);
+          }}
         >
           &#9658;
         </button>
