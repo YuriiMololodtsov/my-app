@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#parent {
+  text-align: center;
+  color: whitesmoke;
+  background-color: black;
+  max-width: 350px;
+  border-radius: 5%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#calendar {
+  display: inline-block;
+}
+
+#calendar td,
+#calendar th {
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.monDay {
+  background-color: red;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+body {
+  background-color: gainsboro;
+  font-family: Arial, serif;
+}
+.header {
+  width: 350px;
+  height: 60px;
+  background-color: black;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  color: aliceblue;
+  text-align: center;
+  padding: 3px 0px;
+}
+
+.note {
+  width: 350px;
+  min-height: 120px;
+  background-color: black;
+  border-radius: 15px;
+  margin-top: 5px;
+  text-align: center;
+  color: aliceblue;
+  padding: 12px 0px;
+  font-size: 12px;
+  line-height: 17px;
 }
